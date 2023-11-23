@@ -1,6 +1,7 @@
 extends Node
 
 export (PackedScene) var Coin
+export (PackedScene) var Powerup
 export (int) var playtime
 
 var level
@@ -20,6 +21,8 @@ func _process(delta):
 		level += 1
 		time_left += 5
 		spawn_coins()
+		$PowerupTimer.wait_time = rand_range(3, 8)
+		$PowerupTimer.start()
 	
 func new_game():
 	playing = true
@@ -38,7 +41,8 @@ func spawn_coins():
 		var c = Coin.instance()
 		$CoinContainer.add_child(c)
 		c.screensize = screensize
-		c.position = Vector2(rand_range(0, screensize.x), rand_range(0, screensize.y))
+		c.position = Vector2(rand_range(20, screensize.x - 20), rand_range(20, screensize.y - 20))
+		$LevelSound.play()
 
 
 func game_over():
@@ -48,6 +52,7 @@ func game_over():
 		coin.queue_free()
 	$HUD.show_game_over()
 	$Player.die()
+	$EndSound.play()
 
 func _on_GameTimer_timeout():
 	time_left -= 1
@@ -55,9 +60,16 @@ func _on_GameTimer_timeout():
 	if time_left <= 0:
 		game_over()
 
-func _on_Player_pickup():
-	score += 1
-	$HUD/MarginContainer/ScoreLabel.text = str(score)
+func _on_Player_pickup(type):
+	match type:
+		"coin":
+			score += 1
+			$HUD.update_score(score)
+			$CoinSound.play()
+		"powerup":
+			time_left += 5
+			$HUD.update_timer(time_left)
+			$PowerupSound.play()
 
 func _on_Player_hurt():
 	game_over()
@@ -65,3 +77,10 @@ func _on_Player_hurt():
 
 func _on_HUD_show_game_over_end():
 	$Player.hide()
+
+
+func _on_PowerupTimer_timeout():
+	var p = Powerup.instance()
+	add_child(p)
+	p.screensize = screensize
+	p.position = Vector2(rand_range(20, screensize.x - 20), rand_range(20, screensize.y - 20))
