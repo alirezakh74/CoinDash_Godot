@@ -1,19 +1,19 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://assets/Kenney Bold.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Scenes/HUD.gd" type="Script" id=2]
+[ext_resource path="res://assets/Vazir.ttf" type="DynamicFontData" id=3]
 
 [sub_resource type="DynamicFont" id=1]
-size = 48
-font_data = ExtResource( 1 )
+size = 60
+font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=2]
-size = 48
-font_data = ExtResource( 1 )
+size = 60
+font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=3]
-size = 48
-font_data = ExtResource( 1 )
+size = 60
+font_data = ExtResource( 3 )
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource( 2 )
@@ -22,10 +22,10 @@ script = ExtResource( 2 )
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_top = -7.0
-margin_bottom = 7.0
+margin_top = -97.0
+margin_bottom = -2.0
 custom_fonts/font = SubResource( 1 )
-text = "Coin Dash!"
+text = "ﺭﻮﺧ ﻪﻜﺳ "
 align = 1
 valign = 1
 
@@ -37,16 +37,16 @@ margin_right = -10.0
 
 [node name="ScoreLabel" type="Label" parent="MarginContainer"]
 margin_right = 460.0
-margin_bottom = 147.0
+margin_bottom = 193.0
 custom_fonts/font = SubResource( 2 )
-text = "0
+text = "٠ 
 "
 
 [node name="TimeLabel" type="Label" parent="MarginContainer"]
 margin_right = 460.0
-margin_bottom = 147.0
+margin_bottom = 193.0
 custom_fonts/font = SubResource( 2 )
-text = "0
+text = "٠ 
 "
 align = 2
 
@@ -64,7 +64,7 @@ margin_top = -150.0
 margin_right = 126.0
 margin_bottom = -50.0
 custom_fonts/font = SubResource( 3 )
-text = "Start"
+text = "ﻉﻭﺮﺷ "
 
 [connection signal="timeout" from="MessageTimer" to="." method="_on_MessageTimer_timeout"]
 [connection signal="pressed" from="StartButton" to="." method="_on_StartButton_pressed"]
