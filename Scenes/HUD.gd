@@ -57,7 +57,7 @@ func cast_to_persian_number(value):
 		if mychar == "3":
 			finalStr += "٣"
 		if mychar == "4":
-			finalStr += "٤"
+			finalStr += "۴"
 		if mychar == "5":
 			finalStr += "٥"
 		if mychar == "6":

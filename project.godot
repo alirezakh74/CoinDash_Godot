@@ -12,7 +12,8 @@ config_version=4
 
 config/name="Coin_Dash_1402"
 run/main_scene="res://Scenes/PlayScene.tscn"
-config/icon="res://icon.png"
+config/icon="res://icon-2.png"
+config/windows_native_icon="res://icon-2.ico"
 
 [display]
 
