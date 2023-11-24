@@ -54,6 +54,7 @@ one_shot = true
 [connection signal="hurt" from="Player" to="." method="_on_Player_hurt"]
 [connection signal="pickup" from="Player" to="." method="_on_Player_pickup"]
 [connection signal="timeout" from="GameTimer" to="." method="_on_GameTimer_timeout"]
+[connection signal="exit_game" from="HUD" to="." method="_on_HUD_exit_game"]
 [connection signal="new_game" from="HUD" to="." method="new_game"]
 [connection signal="show_game_over_end" from="HUD" to="." method="_on_HUD_show_game_over_end"]
 [connection signal="timeout" from="PowerupTimer" to="." method="_on_PowerupTimer_timeout"]

@@ -2,6 +2,7 @@ extends CanvasLayer
 
 signal new_game
 signal show_game_over_end
+signal exit_game
 
 func update_score(value):
 	value = cast_to_persian_number(value)
@@ -24,14 +25,19 @@ func _on_MessageTimer_timeout():
 
 func _on_StartButton_pressed():
 	$StartButton.hide()
+	$ExitButton.hide()
 	$MessageLabel.hide()
 	emit_signal("new_game")
+	
+func _on_ExitButton_pressed():
+	emit_signal("exit_game")
 
 func show_game_over():
 	show_message("Game Over")
 	yield($MessageTimer, "timeout")
 	emit_signal("show_game_over_end")
 	$StartButton.show()
+	$ExitButton.show()
 	$MessageLabel.text = "Coin Dash!"
 	$MessageLabel.show()
 

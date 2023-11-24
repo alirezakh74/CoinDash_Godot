@@ -17,6 +17,8 @@ func _ready():
 	$Player.hide()
 	
 func _process(delta):
+	if Input.is_action_pressed("ui_cancel"):
+		get_tree().quit()
 	if playing and $CoinContainer.get_child_count() == 0:
 		level += 1
 		time_left += 5
@@ -84,3 +86,7 @@ func _on_PowerupTimer_timeout():
 	add_child(p)
 	p.screensize = screensize
 	p.position = Vector2(rand_range(20, screensize.x - 20), rand_range(20, screensize.y - 20))
+
+
+func _on_HUD_exit_game():
+	get_tree().quit()
